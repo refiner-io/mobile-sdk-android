@@ -74,7 +74,7 @@ try {
 
 #### Track Event
 
-`Track Event` lets you track user events. User events can be used to create user segments and target audiences in Refiner.
+`Track Event` lets you track user events. Tracked events can be used to create user segments and target audiences in Refiner.
 
 ```kotlin
 Refiner.trackEvent(eventName = "EVENT_NAME")
