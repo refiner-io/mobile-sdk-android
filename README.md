@@ -74,7 +74,7 @@ try {
 
 #### Track Event
 
-`Track Event` lets you track user events.
+`Track Event` lets you track user events. User events can be used to create user segments and target audiences in Refiner.
 
 ```kotlin
 Refiner.trackEvent(eventName = "EVENT_NAME")
@@ -82,7 +82,7 @@ Refiner.trackEvent(eventName = "EVENT_NAME")
 
 #### Track Screen
 
-`Track Screen` provides to track screen that user is currently on.
+`Track Screen` provides to track screen that user is currently on. Screen information can be used to launch surveys in specific areas of your app.
 
 ```kotlin
 Refiner.trackScreen(screenName = "SCREEN_NAME")
