@@ -120,5 +120,5 @@ Attach contextual data to the survey submissions with `attachToResponse`. Set `n
 Call `Reset User` to reset the user identifier previously set through `Identify User`. We recommend calling this method when the user logs out from your app.
 
 ```kotlin
-    Refiner.resetUser()
+Refiner.resetUser()
 ```
