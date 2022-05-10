@@ -28,6 +28,8 @@ allprojects {
 
 ### 2) Usage
 
+Visit our [documentation](https://refiner.io/docs/kb/mobile-sdk/mobile-sdk-reference/) for more information about how to use the SDK methods.
+
 #### Initialization & Configuration
 
 Initialize Refiner Android SDK in your application class with the needed configuration parameters.
