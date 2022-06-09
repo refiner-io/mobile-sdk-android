@@ -134,12 +134,12 @@ A popular use-case for callback functions is to redirect a user to a new screen 
 
 ```kotlin
 Refiner.onBeforeShow { formId, formConfig ->
-Log.i(TAG, "onBeforeShow \nformId: $formId \nformConfig: $formConfig")
-  if (formId == "ABC") {
-    Log.i(TAG, "Abort mission")
-  } else {
-    Log.i(TAG, "Continue and show survey")
-  }
+    Log.i(TAG, "onBeforeShow \nformId: $formId \nformConfig: $formConfig")
+    if (formId == "ABC") {
+        Log.i(TAG, "Abort mission")
+    } else {
+        Log.i(TAG, "Continue and show survey")
+    }
 }
 ```
 
@@ -147,10 +147,10 @@ Log.i(TAG, "onBeforeShow \nformId: $formId \nformConfig: $formConfig")
 
 ```kotlin
 Refiner.onNavigation { formId, formElement, progress ->
-  Log.i(
-    TAG,
-    "onNavigation \nformId: $formId \nformElement: $formElement \nprogress: $progress"
-  )
+    Log.i(
+        TAG,
+        "onNavigation \nformId: $formId \nformElement: $formElement \nprogress: $progress"
+    )
 }
 ```
 
@@ -158,7 +158,7 @@ Refiner.onNavigation { formId, formElement, progress ->
 
 ```kotlin
 Refiner.onShow { formId ->
-  Log.i(TAG, "onShow \nformId: $formId")
+    Log.i(TAG, "onShow \nformId: $formId")
 }
 ```
 
@@ -166,7 +166,7 @@ Refiner.onShow { formId ->
 
 ```kotlin
 Refiner.onClose { formId ->
-  Log.i(TAG, "onClose \nformId: $formId")
+    Log.i(TAG, "onClose \nformId: $formId")
 }
 ```
 
@@ -174,7 +174,7 @@ Refiner.onClose { formId ->
 
 ```kotlin
 Refiner.onDismiss { formId ->
-  Log.i(TAG, "onDismiss \nformId: $formId")
+    Log.i(TAG, "onDismiss \nformId: $formId")
 }
 ```
 
