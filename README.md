@@ -109,7 +109,7 @@ Refiner.showForm(formUuid = "FORM_UUID", force = true)
 Attach contextual data to the survey submissions with `attachToResponse`. Set `null` to remove the contextual data. 
 
 ```kotlin
- Refiner.attachToResponse(
+Refiner.attachToResponse(
     contextualData = hashMapOf(
         Pair("some_data", "hello"),
         Pair("some_more_data", "hello again"),
@@ -133,58 +133,55 @@ A popular use-case for callback functions is to redirect a user to a new screen 
 `onBeforeShow` gets called right before a survey is supposed to be shown.
 
 ```kotlin
-        Refiner.onBeforeShow { formId, formConfig ->
-        Log.i(TAG, "onBeforeShow \nformId: $formId \nformConfig: $formConfig")
-
-            if (formId == "ABC") {
-                Log.i(TAG, "Abort mission")
-            } else {
-                Log.i(TAG, "Continue and show survey")
-            }
-        }
+Refiner.onBeforeShow { formId, formConfig ->
+Log.i(TAG, "onBeforeShow \nformId: $formId \nformConfig: $formConfig")
+  if (formId == "ABC") {
+    Log.i(TAG, "Abort mission")
+  } else {
+    Log.i(TAG, "Continue and show survey")
+  }
+}
 ```
 
 `onNavigation` gets called when the user moves through the survey
 
 ```kotlin
-        Refiner.onNavigation { formId, formElement, progress ->
-            Log.i(
-                TAG,
-                "onNavigation \nformId: $formId \nformElement: $formElement \nprogress: $progress"
-            )
-        }
+Refiner.onNavigation { formId, formElement, progress ->
+  Log.i(
+    TAG,
+    "onNavigation \nformId: $formId \nformElement: $formElement \nprogress: $progress"
+  )
+}
 ```
 
 `onShow` gets called when a survey widget becomes visible to your user.
 
 ```kotlin
-        Refiner.onShow { formId ->
-            Log.i(TAG, "onShow \nformId: $formId")
-        }
+Refiner.onShow { formId ->
+  Log.i(TAG, "onShow \nformId: $formId")
+}
 ```
 
 `onClose` gets called when the survey widgets disappears from the screen.
 
 ```kotlin
-        Refiner.onClose { formId ->
-            Log.i(TAG, "onClose \nformId: $formId")
-
-        }
+Refiner.onClose { formId ->
+  Log.i(TAG, "onClose \nformId: $formId")
+}
 ```
 
 `onDismiss` gets called when the user dismissed a survey by clicking on the “x” in the top right corner.
 
 ```kotlin
-        Refiner.onDismiss { formId ->
-            Log.i(TAG, "onDismiss \nformId: $formId")
-
-        }
+Refiner.onDismiss { formId ->
+  Log.i(TAG, "onDismiss \nformId: $formId")
+}
 ```
 
 `onComplete` gets called when the user completed (submitted) a survey.
 
 ```kotlin
-        Refiner.onComplete { formId, formData ->
-            Log.i(TAG, "onComplete \nformId: $formId \nformData: $formData")
-        }
+Refiner.onComplete { formId, formData ->
+   Log.i(TAG, "onComplete \nformId: $formId \nformData: $formData")
+}
 ```
