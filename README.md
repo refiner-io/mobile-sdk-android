@@ -56,7 +56,7 @@ class MyApp : Application() {
 
 #### Identify User
 
-Call `Identify User` to create or update user traits in Refiner.
+Call `Identify User` to create or update user traits in Refiner. User traits map accepts values with the following types: String, Int or Boolean.
 
 ```kotlin
 try {
