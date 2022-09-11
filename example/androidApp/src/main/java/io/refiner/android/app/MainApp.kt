@@ -14,7 +14,8 @@ class MainApp : Application() {
             Refiner.initialize(
                 context = this,
                 refinerConfigs = RefinerConfigs(
-                    projectId = PROJECT_ID
+                    projectId = PROJECT_ID,
+                    enableDebugMode = false
                 )
             )
         } catch (e: Exception) {

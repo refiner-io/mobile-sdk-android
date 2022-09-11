@@ -44,7 +44,8 @@ class MyApp : Application() {
             Refiner.initialize(
                 context = this,
                 refinerConfigs = RefinerConfigs(
-                    projectId = "PROJECT_ID"
+                    projectId = "PROJECT_ID",
+                    enableDebugMode = false
                 )
             )
         } catch (e: Exception) {
@@ -56,7 +57,7 @@ class MyApp : Application() {
 
 #### Identify User
 
-Call `Identify User` to create or update user traits in Refiner. User traits map accepts values with the following types: String, Int or Boolean.
+Call `Identify User` to create or update user traits in Refiner. User traits map accepts values with the following types: String, Int or Boolean. Except userId, other parameters are optional.
 
 ```kotlin
 try {
@@ -67,7 +68,8 @@ try {
             Pair("a_number", 123),
             Pair("a_date", "2022-16-04 12:00:00")
         ),
-        locale = "en_EN"
+        locale = "en_EN",
+        signature = "SIGNATURE"
     )
 } catch (e: Exception) {
     Log.e("Refiner", e.printStackTrace().toString())
