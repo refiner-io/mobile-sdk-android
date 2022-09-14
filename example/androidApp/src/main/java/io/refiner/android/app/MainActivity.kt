@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
                     Pair("something", 123),
                     Pair("else", "123"),
                 ),
-                locale = LOCALE
+                locale = LOCALE,
+                signature = null
             )
         } catch (e: Exception) {
             Log.e(TAG, e.printStackTrace().toString())
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val LOCALE = "en_EN"
+        private const val LOCALE = "en"
         private const val USER_ID = "my-user-id"
         private const val FORM_ID = "616fc500-5d32-11ea-8fd5-f140dbcb9780"
     }
