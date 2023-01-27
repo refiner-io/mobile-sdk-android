@@ -119,6 +119,16 @@ We recommend to track screens on which you might want to show a survey one day. 
 Refiner.trackScreen(screenName = "SCREEN_NAME")
 ```
 
+#### Ping
+
+Depending on your setup, you might want to initiate regular checks for surveys that are scheduled for the current user. For example when you are using time based trigger events, or when a target audience is based on user data received by our backend API. 
+
+The `Ping` method provides an easy way to perform such checks. You can call the `Ping` method at key moments in a user's journey, such as when the app is re-opened, or when the user performs a specific action.
+
+```kotlin
+Refiner.ping();
+```
+
 #### Show Form
 
 If you use the Manual Trigger Event for your survey, you need to call `Show Form` whenever you want to launch the survey.
