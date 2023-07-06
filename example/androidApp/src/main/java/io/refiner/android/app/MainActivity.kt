@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             Log.e(TAG, e.printStackTrace().toString())
         }
 
-        Refiner.attachToResponse(
+        Refiner.addToResponse(
             contextualData = hashMapOf(
                 Pair("contextual", 456),
                 Pair("data", "456"),

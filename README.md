@@ -145,10 +145,10 @@ Refiner.showForm(formUuid = "FORM_UUID", force = true)
 
 #### Attach Contextual Data
 
-Attach contextual data to the survey submissions with `attachToResponse`. Set `null` to remove the contextual data. 
+Attach contextual data to the survey submissions with `addToResponse`. Set `null` to remove the contextual data. 
 
 ```kotlin
-Refiner.attachToResponse(
+Refiner.addToResponse(
     contextualData = hashMapOf(
         Pair("some_data", "hello"),
         Pair("some_more_data", "hello again"),
