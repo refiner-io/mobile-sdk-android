@@ -15,7 +15,7 @@ android {
 }
 
 dependencies {
-    implementation("io.refiner:refiner:+")
+    implementation("io.refiner:refiner:1.2.2")
     implementation(AndroidX.appCompat)
     implementation(AndroidX.constraintLayout)
     implementation(AndroidX.core.ktx)
