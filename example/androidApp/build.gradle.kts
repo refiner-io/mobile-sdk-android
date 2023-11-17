@@ -12,12 +12,22 @@ android {
         versionCode = 1
         versionName = "0.0.1"
     }
+    namespace = "io.refiner.android.app"
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlin {
+        jvmToolchain(11)
+    }
 }
 
 dependencies {
-    implementation("io.refiner:refiner:1.2.2")
     implementation(AndroidX.appCompat)
     implementation(AndroidX.constraintLayout)
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.activity.ktx)
+    implementation("io.refiner:refiner:1.3.0")
 }

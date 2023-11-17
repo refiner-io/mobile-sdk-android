@@ -3,7 +3,6 @@ package io.refiner.android.app
 import android.app.Application
 import android.util.Log
 import io.refiner.Refiner
-import io.refiner.RefinerConfigs
 
 class MainApp : Application() {
 
@@ -13,10 +12,8 @@ class MainApp : Application() {
         try {
             Refiner.initialize(
                 context = this,
-                refinerConfigs = RefinerConfigs(
-                    projectId = PROJECT_ID,
-                    enableDebugMode = false
-                )
+                projectId = PROJECT_ID,
+                debugMode = false
             )
         } catch (e: Exception) {
             Log.e(TAG, e.printStackTrace().toString())

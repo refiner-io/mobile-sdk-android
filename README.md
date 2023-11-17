@@ -43,10 +43,8 @@ class MyApp : Application() {
         try {
             Refiner.initialize(
                 context = this,
-                refinerConfigs = RefinerConfigs(
-                    projectId = "PROJECT_ID",
-                    enableDebugMode = false
-                )
+                projectId = "PROJECT_ID",
+                debugMode = false
             )
         } catch (e: Exception) {
             Log.e("Refiner", e.printStackTrace().toString())
@@ -126,7 +124,7 @@ Depending on your setup, you might want to initiate regular checks for surveys t
 The `Ping` method provides an easy way to perform such checks. You can call the `Ping` method at key moments in a user's journey, such as when the app is re-opened, or when the user performs a specific action.
 
 ```kotlin
-Refiner.ping();
+Refiner.ping()
 ```
 
 #### Show Form
@@ -162,6 +160,28 @@ Call `Reset User` to reset the user identifier previously set through `Identify 
 
 ```kotlin
 Refiner.resetUser()
+```
+
+#### Set Project
+
+Change the environment UUID during runtime, after the SDK has been initialised.
+
+```kotlin
+Refiner.setProject(projectId ="PROJECT_ID")
+```
+
+### Close Surveys
+
+Close a survey programmatically without sending any information to the backend API with the `closeForm` method.
+
+```kotlin
+Refiner.closeForm(formUuid = "FORM_UUID")
+```
+
+Close a survey programmatically and send a "dismissed at" timestamp to the backend server with the `dismissForm` method.
+
+```kotlin
+Refiner.dismissForm(formUuid = "FORM_UUID")
 ```
 
 #### Register callback functions
