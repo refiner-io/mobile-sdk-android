@@ -8,7 +8,7 @@ Refiner Android SDK supports Android version 5.0+ (API level 21+)
 
 Refiner Android SDK is published to Maven. Add dependency below in your `app/build.gradle` file.
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.refiner/refiner.svg?label=maven%20central)](#)
+
 
 ```gradle
 dependencies {
