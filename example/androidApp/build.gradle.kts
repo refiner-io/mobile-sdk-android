@@ -22,6 +22,26 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("debug")
+        }
+        release {
+            // Caution! In production, you need to generate your own keystore file.
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = true
+            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+        }
+    }
 }
 
 dependencies {
@@ -29,5 +49,5 @@ dependencies {
     implementation(AndroidX.constraintLayout)
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.activity.ktx)
-    implementation("io.refiner:refiner:1.3.4")
+    implementation("io.refiner:refiner:1.3.5")
 }

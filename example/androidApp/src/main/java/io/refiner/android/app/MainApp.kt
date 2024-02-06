@@ -13,7 +13,7 @@ class MainApp : Application() {
             Refiner.initialize(
                 context = this,
                 projectId = PROJECT_ID,
-                debugMode = false
+                debugMode = true
             )
         } catch (e: Exception) {
             Log.e(TAG, e.printStackTrace().toString())
