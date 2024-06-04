@@ -49,5 +49,5 @@ dependencies {
     implementation(AndroidX.constraintLayout)
     implementation(AndroidX.core.ktx)
     implementation(AndroidX.activity.ktx)
-    implementation("io.refiner:refiner:1.3.8")
+    implementation("io.refiner:refiner:1.3.10")
 }
