@@ -1,10 +1,10 @@
-# Refiner Mobile SDK integration
+# Refiner Mobile SDK for Android
 
-## Android
+[![Maven Central](https://img.shields.io/maven-central/v/io.refiner/refiner.svg?label=maven%20central)](#)
 
 Refiner Android SDK supports Android version 5.0+ (API level 21+)
 
-### 1) Installation
+## 1) Installation
 
 Refiner Android SDK is published to Maven. Add dependency below in your `app/build.gradle` file.
 
@@ -26,11 +26,11 @@ allprojects {
 }
 ```
 
-### 2) Usage
+## 2) Usage
 
 Visit our [documentation](https://refiner.io/docs/kb/mobile-sdk/mobile-sdk-reference/) for more information about how to use the SDK methods.
 
-#### Initialization & Configuration
+### Initialization & Configuration
 
 Initialize Refiner Android SDK in your application class with the needed configuration parameters.
 
@@ -53,7 +53,7 @@ class MyApp : Application() {
 }
 ```
 
-#### Identify User
+### Identify User
 
 Call `Identify User` to create or update user traits in Refiner.
 
@@ -99,7 +99,7 @@ try {
 }
 ```
 
-#### Track Event
+### Track Event
 
 `Track Event` lets you track user events. Tracked events can be used to create user segments and target audiences in Refiner.
 
@@ -107,7 +107,7 @@ try {
 Refiner.trackEvent(eventName = "EVENT_NAME")
 ```
 
-#### Track Screen
+### Track Screen
 
 `Track Screen` provides to track screen that user is currently on. Screen information can be used to launch surveys in specific areas of your app.
 
@@ -117,7 +117,7 @@ We recommend to track screens on which you might want to show a survey one day. 
 Refiner.trackScreen(screenName = "SCREEN_NAME")
 ```
 
-#### Ping
+### Ping
 
 Depending on your setup, you might want to initiate regular checks for surveys that are scheduled for the current user. For example when you are using time based trigger events, or when a target audience is based on user data received by our backend API. 
 
@@ -127,7 +127,7 @@ The `Ping` method provides an easy way to perform such checks. You can call the 
 Refiner.ping()
 ```
 
-#### Show Form
+### Show Form
 
 If you use the Manual Trigger Event for your survey, you need to call `Show Form` whenever you want to launch the survey.
 
@@ -141,7 +141,7 @@ For testing purposes, you can also provide an additional `force` parameter which
 Refiner.showForm(formUuid = "FORM_UUID", force = true)
 ```
 
-#### Attach Contextual Data
+### Attach Contextual Data
 
 Attach contextual data to the survey submissions with `addToResponse`. Set `null` to remove the contextual data. 
 
@@ -154,7 +154,15 @@ Refiner.addToResponse(
 )
 ```
 
-#### Reset User
+### Start user session
+
+A new user session is automatically detected when a user returns to your application after at least one hour of inactivity. You can choose to manually start a new user session with the method shown below. You can call this method for example right after a user opens your app.
+
+```kotlin
+Refiner.startSession()
+```
+
+### Reset User
 
 Call `Reset User` to reset the user identifier previously set through `Identify User`. We recommend calling this method when the user logs out from your app.
 
@@ -162,7 +170,7 @@ Call `Reset User` to reset the user identifier previously set through `Identify 
 Refiner.resetUser()
 ```
 
-#### Set Project
+### Set Project
 
 Change the environment UUID during runtime, after the SDK has been initialised.
 
@@ -184,7 +192,7 @@ Close a survey programmatically and send a "dismissed at" timestamp to the backe
 Refiner.dismissForm(formUuid = "FORM_UUID")
 ```
 
-#### Register callback functions
+### Register callback functions
 
 Registering callback functions allows you to execute any code at specific moments in the lifecycle of a survey.
 A popular use-case for callback functions is to redirect a user to a new screen once they completed a survey.
