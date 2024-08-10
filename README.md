@@ -55,13 +55,11 @@ class MyApp : Application() {
 
 ### Identify User
 
-Call `Identify User` to create or update user traits in Refiner.
+Call `Identify User` to create or update a user record in Refiner.
 
 The first parameter is the userId of your logged-in user and is the only mandatory parameter.
 
-The second parameter is an object of user traits. You can omit or set this value to `null` if you don't want to send any user traits to your Refiner account.
-
-User traits map accepts values with the following types: String, Int or Boolean.
+The second parameter is an object of user traits. You can omit or set this value to `null` if you don't want to attach any traits to the user object in Refiner. User traits map accepts values with the following types: String, Int or Boolean.
 
 ```kotlin
 try {
@@ -85,6 +83,31 @@ The fourth parameter is an optional [Identity Verification](https://refiner.io/d
 ```kotlin
 try {
     Refiner.identifyUser(
+        userId = "USER_ID",
+        userTraits = linkedMapOf(
+            Pair("email", "hello@hello.com"),
+            Pair("a_number", 123),
+            Pair("a_date", "2022-16-04 12:00:00")
+        ),
+        locale = "en",
+        signature = "SIGNATURE"
+    )
+} catch (e: Exception) {
+    Log.e("Refiner", e.printStackTrace().toString())
+}
+```
+
+### Set User
+
+The `Set User` method acts as an alternative to the `Identify User` method described above. 
+
+In contrast to the `Identify User` method, the `Set User` method does not immediatelly create a user object in your Refiner account. The provided user Id and traits are kept locally in your app and no data is communicated to our servers at first. Only when the user performs a meaningful action in your app (e.g. `Track Event` or `Track Screen` is executed) will the data be sent to our servers and a user object be created.
+
+The purpose of this alternative method is provide a way to identify users locally when the SDK is initialised but keep the number of tracked users in your Refiner account to a minimum.
+
+```kotlin
+try {
+    Refiner.setUser(
         userId = "USER_ID",
         userTraits = linkedMapOf(
             Pair("email", "hello@hello.com"),
