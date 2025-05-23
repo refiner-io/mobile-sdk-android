@@ -285,3 +285,11 @@ Refiner.onComplete { formId, formData ->
    Log.i(TAG, "onComplete \nformId: $formId \nformData: $formData")
 }
 ```
+
+`onError` gets called when an error occured.
+
+```kotlin
+Refiner.onError { message ->
+   Log.i(TAG, "onError \nmessage: $message")
+}
+```
