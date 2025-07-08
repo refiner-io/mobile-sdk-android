@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
                     Pair("else", "123"),
                 ),
                 locale = LOCALE,
-                signature = null
+                signature = null,
+                writeOperation = Refiner.WriteOperation.APPEND
             )
         } catch (e: Exception) {
             Log.e(TAG, e.printStackTrace().toString())
