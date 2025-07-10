@@ -86,9 +86,13 @@ try {
 }
 ```
 
+#### Advanced parameters
+
 The third parameter is for setting the `locale` of a user and is optional. The expected format is a two letter [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code. When provided, the locale code is used for launching surveys for specific languages, as well as launching translated surveys. You can omit or set the value to `null` if you are not using any language specific features.
 
 The fourth parameter is an optional [Identity Verification](https://refiner.io/docs/kb/settings/identity-verification/) signature. We recommend to use a Identify Verification signature for increased security in a production environment. For development purposes, you can omit or set this value to `null`.
+
+The fifth parameter allows you to change the data storage mode for userTraits from the default "append" mode to "replace". By default, traits are appended to the existing user record—this means previously stored data will persist even if it's not included in the current payload. When set to "replace", only the traits provided in the current payload are kept. Any previously stored traits that are not included will be removed from the user object in Refiner.
 
 ```kotlin
 try {
@@ -100,7 +104,8 @@ try {
             Pair("a_date", "2022-16-04 12:00:00")
         ),
         locale = "en",
-        signature = "SIGNATURE"
+        signature = "SIGNATURE",
+        writeOperation = Refiner.WriteOperation.APPEND //or Refiner.WriteOperation.REPLACE
     )
 } catch (e: Exception) {
     Log.e("Refiner", e.printStackTrace().toString())
