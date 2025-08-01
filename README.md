@@ -2,11 +2,11 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.refiner/refiner.svg?label=maven%20central)](#)
 
-This repository hosts the official Refiner Android SDK. Installing the SDK allows you to track user data in Refiner and launch in-app surveys within your Android app.
+This repository hosts the official Refiner Android SDK. Installing the SDK allows you to track user data in Refiner and launch [in-app surveys](https://refiner.io/features/in-app-surveys/) within your Android app.
 
 The Refiner Android SDK supports Android version 5.0+ (API level 21+)
 
-Refiner is a customer feedback survey platform designed specifically for web and mobile applications. Get spot-on insights from your users with perfectly timed [mobile app microsurveys](https://refiner.io/features/mobile-app-surveys/).
+Refiner is a customer feedback survey platform designed specifically for web and mobile applications. Get spot-on insights from your users with perfectly timed [mobile in-app surveys](https://refiner.io/features/mobile-app-surveys/).
 
 With Refiner you can ask your users any question while they are using your Android mobile app. Measure [customer satisfaction (CSAT)](https://refiner.io/solutions/csat/), [Net Promoter Score (NPS)](https://refiner.io/solutions/nps/), or [customer effort score (CES)](https://refiner.io/solutions/ces/), research what to built next or profile your users. Refiner supports all product feedback survey use cases and comes packed with expert-built templates that will get you started quickly.
 
