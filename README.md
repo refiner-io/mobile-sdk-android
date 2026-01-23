@@ -112,6 +112,26 @@ try {
 }
 ```
 
+### Set Anonymous Id
+
+The `Set Anonymous Id` method allows you to track anonymous users without requiring a login or user identification. This is useful for tracking users who haven't signed up yet or for apps that don't require authentication.
+
+When not called, Refiner will automatically generate and maintain a unique anonymous identifier for the user. This identifier persists across app sessions.
+
+```kotlin
+Refiner.setAnonymousId(anonymousId = "ANONYMOUS_ID")
+```
+
+### Set Locale
+
+The `Set Locale` method allows you to set or update the locale for anonymous users after they have been identified. This is useful when you want to change the language preference for an anonymous user without re-identifying them.
+
+The expected format is a two letter ISO 639-1 language code.
+
+```kotlin
+Refiner.setLocale(locale = "en")
+```
+
 ### Set User
 
 The `Set User` method acts as an alternative to the `Identify User` method described above. 
