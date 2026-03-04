@@ -1,65 +1,39 @@
-name: Update Example App
-
-# Triggered by mobile-sdk-internal after Android SDK is published to Maven Central.
-# Updates the SDK version reference in the example app and commits directly to main.
+name: Update SDK Version
 
 on:
   repository_dispatch:
-    types: [release]
-  # Manual re-trigger in case the repository_dispatch fails
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Android SDK version (e.g. 1.7.0)"
-        required: true
+    types: [android-sdk-release]
 
 jobs:
   update:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Resolve version
-        id: resolve
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SDK_RELEASE_PAT }}
+
+      - name: Extract version
+        id: version
+        run: echo "VERSION=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+
+      - name: Update example app SDK version
         run: |
-          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
-            echo "version=${{ github.event.client_payload.version }}" >> $GITHUB_OUTPUT
-          else
-            echo "version=${{ inputs.version }}" >> $GITHUB_OUTPUT
-          fi
+          sed -i 's/implementation("io.refiner:refiner:[^"]*")/implementation("io.refiner:refiner:${{ steps.version.outputs.VERSION }}")/' example/androidApp/build.gradle.kts
 
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: Checkout main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          token: ${{ steps.app-token.outputs.token }}
-
-      - name: Configure git
+      - name: Commit, tag, and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Release ${{ steps.version.outputs.VERSION }}"
+          git tag "${{ steps.version.outputs.VERSION }}"
+          git push origin main --tags
 
-      - name: Bump SDK version in example app
-        run: |
-          VERSION="${{ steps.resolve.outputs.version }}"
-          sed -i "s/\"io\.refiner:refiner:[0-9.]*\"/\"io.refiner:refiner:${VERSION}\"/" \
-            example/androidApp/build.gradle.kts
-          grep "io.refiner:refiner" example/androidApp/build.gradle.kts
-
-      - name: Commit and push to main
-        run: |
-          VERSION="${{ steps.resolve.outputs.version }}"
-          git add example/androidApp/build.gradle.kts
-          if git diff --staged --quiet; then
-            echo "No changes detected — version may already be up to date."
-          else
-            git commit -m "Update SDK to ${VERSION}"
-            git push origin main
-          fi
-          echo "## Updated example app to Android SDK ${VERSION}" >> $GITHUB_STEP_SUMMARY
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.VERSION }}
+          name: ${{ steps.version.outputs.VERSION }}
+          generate_release_notes: true
