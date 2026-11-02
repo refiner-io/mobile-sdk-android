@@ -38,9 +38,23 @@ jobs:
           git tag "${{ steps.version.outputs.VERSION }}"
           git push origin main --tags
 
-      - name: Create GitHub Release
+      # Public release notes are reviewed and published by hand: create a DRAFT with the
+      # change list the SDK repo sent in the dispatch payload (CHANGELOG section).
+      - name: Write release notes
+        env:
+          NOTES: ${{ github.event.client_payload.notes }}
+          VERSION: ${{ steps.version.outputs.VERSION }}
+        run: |
+          if [ -n "$NOTES" ]; then
+            printf '%s\n' "$NOTES" > "$RUNNER_TEMP/release-notes.md"
+          else
+            echo "Refiner Android SDK $VERSION. See the CHANGELOG in the SDK repository for details." > "$RUNNER_TEMP/release-notes.md"
+          fi
+
+      - name: Create draft GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.VERSION }}
           name: ${{ steps.version.outputs.VERSION }}
-          generate_release_notes: true
+          body_path: ${{ runner.temp }}/release-notes.md
+          draft: true
